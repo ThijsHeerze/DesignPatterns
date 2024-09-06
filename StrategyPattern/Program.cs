@@ -1,5 +1,6 @@
 ﻿using StrategyPattern.Ducks;
 using StrategyPattern.Interfaces.FlyBehavior;
+using StrategyPattern.Interfaces.SwimBehavior;
 
 namespace StrategyPattern
 {
@@ -7,31 +8,30 @@ namespace StrategyPattern
     {
         static void Main(string[] args)
         {
-            Duck mallardDuck = new MallardDuck();
-            Duck redheadDuck = new RedheadDuck();
-            Duck decoyDuck = new DecoyDuck();
-            Duck rubberDuck = new RubberDuck();
 
-            MallardDuck mallard = new MallardDuck();
+            Duck mallard = new MallardDuck();
             mallard.Display();
             mallard.PerformQuack();
             mallard.PerformFly();
 
-            RedheadDuck redhead = new RedheadDuck();
+            Duck redhead = new RedheadDuck();
             redhead.Display();
             redhead.PerformQuack();
             redhead.PerformFly();
 
-            DecoyDuck decoy = new DecoyDuck();
+            Duck decoy = new DecoyDuck();
             decoy.Display();
             decoy.PerformQuack();
             decoy.PerformFly();
 
-            RubberDuck rubber = new RubberDuck();
+            Duck rubber = new RubberDuck();
             rubber.Display();
             rubber.PerformQuack();
             rubber.PerformFly();
 
+            Duck robot = new RobotDuck();
+            robot.Display();
+            robot.PerformSwim();
         }
     }
 }
