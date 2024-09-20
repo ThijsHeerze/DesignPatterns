@@ -1,6 +1,7 @@
 ﻿using DecoratorPattern.Beverages;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,20 @@ namespace DecoratorPattern.Condiments
 
         public override double cost()
         {
-            return 0.10 + baseBeverage.cost();
+            double cost = baseBeverage.cost();
+            switch (baseBeverage.Size)
+            {
+                case Beverages.Size.TALL:
+                    cost += 0.10;
+                    break;
+                case Beverages.Size.GRANDE:
+                    cost += 0.15;
+                    break;
+                case Beverages.Size.VENDI:
+                    cost += 0.20;
+                    break;
+            }
+            return cost;
         }
 
         public override string GetDescription()

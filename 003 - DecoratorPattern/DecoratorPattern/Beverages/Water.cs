@@ -24,11 +24,26 @@ namespace DecoratorPattern.Beverages
         }
         public override double cost()
         {
+            double baseCost = 1.99;
             if (baseBeverage != null)
             {
-                return 0.50 + baseBeverage.cost();
+                baseCost += baseBeverage.cost();
             }
-            return 0.50;
+
+            switch (baseBeverage?.Size ?? this.Size)
+            {
+                case Size.TALL:
+                    baseCost += 0.10;
+                    break;
+                case Size.GRANDE:
+                    baseCost += 0.15;
+                    break;
+                case Size.VENDI:
+                    baseCost += 0.20;
+                    break;
+            }
+
+            return baseCost;
         }
     }
 }

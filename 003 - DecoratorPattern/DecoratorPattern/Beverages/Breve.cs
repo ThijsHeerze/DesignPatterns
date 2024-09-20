@@ -1,22 +1,30 @@
-﻿using DecoratorPattern.Beverages;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DecoratorPattern.Condiments
+namespace DecoratorPattern.Beverages
 {
-    internal class Chocolate : CondimentDecorator
+    internal class Breve : Beverage
     {
-        public Chocolate(Beverage beverage)
+        public Breve(Beverage beverage = null)
         {
+            description = "Breve";
             this.baseBeverage = beverage;
-        }
 
+        }
+        public override string GetDescription()
+        {
+            if (baseBeverage != null)
+            {
+                return baseBeverage.GetDescription() + ", " + description;
+            }
+            return description;
+        }
         public override double cost()
         {
-            double baseCost = 0.00;
+            double baseCost = 1.99;
             if (baseBeverage != null)
             {
                 baseCost += baseBeverage.cost();
@@ -24,23 +32,18 @@ namespace DecoratorPattern.Condiments
 
             switch (baseBeverage?.Size ?? this.Size)
             {
-                case Beverages.Size.TALL:
+                case Size.TALL:
                     baseCost += 0.10;
                     break;
-                case Beverages.Size.GRANDE:
+                case Size.GRANDE:
                     baseCost += 0.15;
                     break;
-                case Beverages.Size.VENDI:
+                case Size.VENDI:
                     baseCost += 0.20;
                     break;
             }
 
             return baseCost;
-        }
-
-        public override string GetDescription()
-        {
-            return baseBeverage.GetDescription() + ", Chocolate";
         }
     }
 }

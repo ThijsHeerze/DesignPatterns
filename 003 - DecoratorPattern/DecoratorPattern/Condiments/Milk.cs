@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace DecoratorPattern.Condiments
 {
-    internal class Chocolate : CondimentDecorator
+    internal class Milk : CondimentDecorator
     {
-        public Chocolate(Beverage beverage)
+        public Milk(Beverage beverage)
         {
             this.baseBeverage = beverage;
         }
@@ -40,7 +40,7 @@ namespace DecoratorPattern.Condiments
 
         public override string GetDescription()
         {
-            return baseBeverage.GetDescription() + ", Chocolate";
+            return baseBeverage.GetDescription() + ", Milk";
         }
     }
 }
